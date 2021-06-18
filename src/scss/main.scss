@@ -1,0 +1,15 @@
+@import "./helper/customLight";
+@import "./helper/customDark";
+@import "./components/button";
+@import "./components/navbar";
+@import "./layout/header";
+@import "./layout/product";
+@import "./layout/sale-off";
+@import "./layout/hangsanXuat";
+@import "./layout/footer";
+@import "./pages/AccLogin";
+@import "./layout/slider";
+* {
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-size: 15px;
+}
