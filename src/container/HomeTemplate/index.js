@@ -1,11 +1,13 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import SanPhamMua from "../../components/SanPhamMua";
 import NavbarHome from "./../../components/Navbar";
 
 function HomeLayout(props) {
   return (
     <div>
       <NavbarHome />
+      <SanPhamMua />
       {props.children}
     </div>
   );

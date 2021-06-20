@@ -107,9 +107,10 @@ export default class NavbarHome extends Component {
                   </div>
                 </li>
               </ul>
-            </div>
-            <div className="collapse d-none d-lg-flex">
-              <User />
+
+              <div className="collapse d-flex m-0 p-0">
+                <User />
+              </div>
             </div>
           </div>
         </nav>

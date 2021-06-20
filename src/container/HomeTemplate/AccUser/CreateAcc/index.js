@@ -29,7 +29,7 @@ class CreateAcc extends Component {
     this.props.fetchCreate(this.state, this.props.history);
   };
   handleOnKeyUp = (e) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     if (this.state.matKhau.indexOf(value) !== -1) {
       document.getElementById("checkMK").style.display = "none";
       document.getElementById("checkMK").innerHTML = "";

@@ -4,7 +4,6 @@ import {
   USER_LOGIN_FAILED,
 } from "./constant";
 import Axios from "axios";
-import { Redirect } from "react-router";
 
 export const fetchLoginApi = (user, history) => {
   return (dispatch) => {

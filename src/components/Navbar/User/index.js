@@ -64,7 +64,7 @@ class User extends Component {
       return (
         <div>
           <NavLink
-            className="btn btn-redorange btn-focus mr-2 rounded"
+            className="btn btn-redorange btn-focus mr-2 rounded p-0 m-0"
             type="submit"
             to="/login"
           >

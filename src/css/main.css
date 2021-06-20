@@ -156,7 +156,7 @@
 
 .nav-bar {
   position: relative;
-  z-index: 9999999;
+  z-index: 999;
   top: 0px !important;
   background-color: #fff;
 }
@@ -350,11 +350,16 @@ header .header .header-search {
   bottom: -20px;
 }
 
-.product .container .slickProduct .product-img {
+.product .container .productitem .product-img {
   position: relative;
 }
 
-.product .container .slickProduct .product-img .item-hover {
+.product .container .productitem .product-img img {
+  width: 100%;
+  background-position: center;
+}
+
+.product .container .productitem .product-img .item-hover {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -364,29 +369,18 @@ header .header .header-search {
   transition: all 0.5s;
 }
 
-.product .container .slickProduct .product-img .item-hover:hover {
+.product .container .productitem .product-img .item-hover:hover {
   opacity: 1;
 }
 
-.product .container .slickProduct .product-img .item-hover .bg-product {
+.product .container .productitem .product-img .item-hover .item-hover-hover .bg-product {
   background-color: rgba(255, 255, 255, 0.4);
+  margin: 0 auto;
   transition: all 0.5s;
 }
 
-.product .container .slickProduct .product-img .item-hover .bg-product:hover {
+.product .container .productitem .product-img .item-hover .item-hover-hover .bg-product:hover {
   background-color: #fff;
-}
-
-body.darkmode .product .container .slickProduct .productitem .item-hover {
-  background-color: rgba(0, 0, 0, 0.7) !important;
-}
-
-body.darkmode .product .container .slickProduct .productitem .item-hover .bg-product {
-  background-color: rgba(0, 0, 0, 0.4) !important;
-}
-
-body.darkmode .product .container .slickProduct .productitem .item-hover .bg-product:hover {
-  background-color: rgba(98, 98, 98, 0.486) !important;
 }
 
 .sale-off {
@@ -430,6 +424,12 @@ footer .foter-icon {
   margin-bottom: 15px;
   margin-right: 10px;
   border: 1px solid transparent;
+}
+
+@media (max-width: 768px) {
+  footer {
+    text-align: center;
+  }
 }
 
 #login {
@@ -562,13 +562,13 @@ footer .foter-icon {
 }
 
 #login .social-icon:hover {
-  color: #fb4226;
-  border-color: #fb4226;
+  color: #212529;
+  border-color: #212529;
 }
 
 #login .btn {
   width: 150px;
-  background-color: #fc4f35;
+  background-color: #212529;
   border: none;
   outline: none;
   height: 49px;
@@ -603,7 +603,7 @@ footer .foter-icon {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #fb4226 0%, #fc4f35 100%);
+  background-image: linear-gradient(-45deg, #212529 0%, #212529 100%);
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
@@ -872,6 +872,31 @@ footer .foter-icon {
 #carouselExampleIndicators:hover .play img {
   opacity: 1;
   display: block;
+}
+
+.SanPhamMua {
+  position: fixed;
+  bottom: 40%;
+  right: 0;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  z-index: 9999;
+  background-color: #000;
+  opacity: 0.7;
+}
+
+.SanPhamMua .SanPhamMua-item {
+  color: #f8faff;
+  opacity: 0.7;
+}
+
+.SanPhamMua:hover {
+  opacity: 1;
+}
+
+.SanPhamMua:hover .SanPhamMua-item {
+  opacity: 1;
 }
 
 * {

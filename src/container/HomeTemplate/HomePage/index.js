@@ -3,14 +3,14 @@ import { WOW } from "wowjs";
 import Slider from "../Slider";
 import Search from "../Search";
 import Product from "../Product";
-import FutureProduct from "../FutureProduct";
 import Footer from "../Footer";
+import ListItem from "../ListItem";
 
 export default class HomePage extends Component {
   componentDidMount() {
     const wow = new WOW({
       offset: 100,
-      mobile: false,
+      mobile: true,
       live: true,
     });
 
@@ -22,7 +22,7 @@ export default class HomePage extends Component {
         <Slider />
         <Search />
         <Product />
-        <FutureProduct />
+        <ListItem />
         <Footer />
       </div>
     );

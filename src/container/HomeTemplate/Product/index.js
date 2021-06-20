@@ -11,21 +11,21 @@ export default class Product extends Component {
             </h2>
             <div className="row">
               <div className="col-6 col-md-4 mb-2">
-                <img src="./img/banner-1.png" className="w-100" alt />
+                <img src="./img/banner-1.png" className="w-100" alt="" />
               </div>
               <div className="col-6 col-md-4 mb-2">
-                <img src="./img/banner-2.png" className="w-100" alt />
+                <img src="./img/banner-2.png" className="w-100" alt="" />
               </div>
               <div className="d-block d-md-none col-3" />
               <div className="col-6 col-md-4 mb-2">
-                <img src="./img/banner-3.png" className="w-100" alt />
+                <img src="./img/banner-3.png" className="w-100" alt="" />
               </div>
             </div>
           </div>
         </section>
         <section className="wow fadeInLeft">
           <div className="container cover">
-            <img src="./img/banner.png" className="w-100" alt />
+            <img src="./img/banner.png" className="w-100" alt="" />
           </div>
         </section>
       </>

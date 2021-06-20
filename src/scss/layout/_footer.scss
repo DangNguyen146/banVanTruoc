@@ -12,4 +12,7 @@ footer {
         margin-right: 10px;
         border: 1px solid transparent;
     }
+    @media (max-width: 768px) {
+        text-align: center;
+    }
 }
