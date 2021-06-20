@@ -5,8 +5,9 @@ import Loader from "./../../../components/Loader";
 import CardItem from "./../../../components/CardItem";
 import { connect } from "react-redux";
 import { actListMovieApi } from "./modules/action";
+import database from "./data.json";
 
-class PhimSapChieu extends Component {
+class ListItem extends Component {
   componentDidMount() {
     // this.props.fetchListMovie();
   }
@@ -26,12 +27,16 @@ class PhimSapChieu extends Component {
     //   })
     // );
 
-    let arr = [];
-    for (let i = 1; i <= 8; i++) {
-      arr.push(i);
-    }
-    return arr.map((i) => {
-      return <CardItem key={i} />;
+    // let arr = [];
+    // for (let i = 1; i <= 8; i++) {
+    //   arr.push(i);
+    // }
+    // return arr.map((i) => {
+    //   return <CardItem key={i} />;
+    // });
+
+    return database.slice(temp, temp + resposive).map((item, i) => {
+      return <CardItem key={i} van={item} />;
     });
   };
 
@@ -58,33 +63,34 @@ class PhimSapChieu extends Component {
     };
     const renderSlides = (resposive) => {
       // let temp = this.renderLenght() / resposive;
-      // let arr = [];
-      // for (let i = 1; i <= temp; i++) {
-      //   arr.push(i);
-      // }
-      // let temp1 = -resposive;
+      let arr = [0];
+      for (let i = 1; i <= 20 / resposive; i++) {
+        arr.push(i);
+      }
+      let temp1 = -resposive;
       // const { loading } = this.props;
 
       // if (loading) return <Loader />;
-      // return arr.map(() => (
-      //   <div>
-      //     <div className="row mx-0">
-      //       {this.renderHTML((temp1 += resposive), resposive)}
-      //     </div>
-      //   </div>
-      // ));
-
-      let arr = [];
-      for (let i = 1; i <= 2; i++) {
-        arr.push(i);
-      }
-      return arr.map((index) => (
+      // let arr = [1, 2, 3, 4, 5, 6];
+      return arr.map(() => (
         <div>
           <div className="row mx-0">
-            {this.renderHTML(resposive, resposive)}
+            {this.renderHTML((temp1 += resposive), resposive)}
           </div>
         </div>
       ));
+
+      //   let arr = [];
+      //   for (let i = 1; i <= 2; i++) {
+      //     arr.push(i);
+      //   }
+      //   return arr.map((index) => (
+      //     <div>
+      //       <div className="row mx-0">
+      //         {this.renderHTML(resposive, resposive)}
+      //       </div>
+      //     </div>
+      //   ));
     };
     return (
       <>
@@ -98,15 +104,7 @@ class PhimSapChieu extends Component {
                 ref={(c) => (this.slider = c)}
                 {...settings}
                 s
-                className="d-none d-lg-block"
-              >
-                {renderSlides(12)}
-              </Slider>
-              <Slider
-                ref={(c) => (this.slider = c)}
-                {...settings}
-                s
-                className="d-none d-md-block d-lg-none"
+                className="d-none d-md-block"
               >
                 {renderSlides(8)}
               </Slider>
@@ -133,11 +131,11 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchListMovie: () => {
-      dispatch(actListMovieApi(phim_sap_chieu));
-    },
-  };
+  // return {
+  //   fetchListVan: () => {
+  //     dispatch(actListMovieApi(van));
+  //   },
+  // };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PhimSapChieu);
+export default connect(mapStateToProps, mapDispatchToProps)(ListItem);

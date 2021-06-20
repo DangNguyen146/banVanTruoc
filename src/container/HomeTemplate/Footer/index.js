@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class Footer extends Component {
   render() {
     return (
-      <footer className="mt-3 bg-dark text-light wow fadeInLeft">
+      <footer className=" bg-dark text-light wow fadeInLeft">
         <div className="container px-3 py-4">
           <div className="row">
             <div className="col-12 mb-3 mb-md-0 col-md-4">

@@ -1,12 +1,14 @@
+import { Button } from "@material-ui/core";
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { DatHangAction } from "./Modules/action";
+import { Toast } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
-export default class CardItem extends Component {
+class CardItem extends Component {
   render() {
-    // const { movie } = this.props;
-    // function CutName(name) {
-    //   if (name.length > 11) name = name.slice(0, 12) + "...";
-    //   return name;
-    // }
+    const { van } = this.props;
+
     return (
       <>
         {/* <div id="listmovieitem" className="col-6 col-sm-3 col-xl-2 mb-2 px-1 ">
@@ -32,28 +34,62 @@ export default class CardItem extends Component {
         <div className="productitem col-6 col-sm-3 overflow-hidden">
           <div className="item-content">
             <div className="product-img align-items-center">
-              <img src="./img/1.png" className="h-100" alt="" />
+              <img src={van.hinhAnh} className="h-100" alt="" />
               <div className="item-hover text-center w-100 ">
                 <div className="ms-5 mt-5 text-center item-hover-hover">
-                  <div className="ms-5 mb-2 w-25 p-2 text-center border shadow item-hover-item bg-product">
+                  <Button
+                    className="ms-5 mb-2 w-25 p-2 text-center border shadow item-hover-item bg-product"
+                    onClick={() => {
+                      const van = this.props.van;
+                      this.props.datVan({
+                        maVan: van.maVan,
+                        tenVan: van.tenVan,
+                        giaVan: van.giaVan,
+                        hinhAnh: van.hinhAnh,
+                        moTa: van.moTa,
+                        danhGia: van.danhGia,
+                        soLuong: 1,
+                      });
+                      this.setState({
+                        show: true,
+                      });
+                    }}
+                  >
                     <i className="fa fa-shopping-cart" />
-                  </div>
+                  </Button>
                   <div className="ms-5 mb-2 w-25 p-2 text-center border shadow item-hover-item bg-product">
                     <i className="fa fa-search-plus" />
                   </div>
-                  <div className="ms-5 mb-2 w-25 p-2 text-center border shadow item-hover-item bg-product">
+                  <Button className="ms-5 mb-2 w-25 p-2 text-center border shadow item-hover-item bg-product">
                     <i className="fa fa-ice-cream" />
-                  </div>
+                  </Button>
                 </div>
               </div>
             </div>
-            <div className="product-content text-center">
-              <h5> FLOWERS SURFSKATE COMPLETE</h5>
-              <p>2.900.000₫</p>
-            </div>
+            <NavLink
+              className="product-content text-center nav-link text-dark"
+              to={"/detail/" + this.props.van.maVan}
+            >
+              <h5>{van.tenVan}</h5>
+              <p>{van.giaVan}Đ</p>
+            </NavLink>
           </div>
         </div>
       </>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    dangSachVanDangDat: state.datHangReducer.dangSachVanDangDat,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    datVan: (van) => {
+      dispatch(DatHangAction(van));
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(CardItem);
