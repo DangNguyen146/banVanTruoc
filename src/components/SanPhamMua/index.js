@@ -1,9 +1,11 @@
+import { Button } from "@material-ui/core";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { GiamSoLuong, TangSoLuong, HuySanPham } from "./Modules/action";
 
 class SanPhamMua extends Component {
   renderHTML = () => {
-    if (this.props.dangSachVanDangDat.length !== 0)
+    if (this.props.dangSachVanDangDat.length !== 0) {
       return this.props.dangSachVanDangDat.map((item, index) => {
         return (
           <>
@@ -20,11 +22,36 @@ class SanPhamMua extends Component {
                     </div>
                     <div className="col-5">Giá sản phẩm: </div>
                     <div className="col-7">
-                      <i className="pb-0">{item.giaVan}</i>
+                      <i className="pb-0">{item.giaVan} VNĐ</i>
                     </div>
-                    <div className="col-5">Số lượng sản phẩm: </div>
-                    <div className="col-7">
-                      <i className="pb-0">{item.soLuong}</i>
+                    <div className="col-12 col-md-5">Số lượng sản phẩm: </div>
+                    <Button
+                      className="col-2 px-0 bg-secondary text-light"
+                      onClick={() => {
+                        this.props.giamSoLuong(item);
+                      }}
+                    >
+                      -
+                    </Button>
+                    <div className="col-2 text-center px-2">
+                      <p className="pb-0  mb-0 mt-2 ">{item.soLuong}</p>
+                    </div>
+                    <Button
+                      className="col-2 px-0 bg-secondary text-light"
+                      onClick={() => {
+                        this.props.tangSoLuong(item);
+                      }}
+                    >
+                      +
+                    </Button>
+                    <div
+                      className="col-12 "
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        this.props.huySanPham(item);
+                      }}
+                    >
+                      <i>Hủy mua sản phẩm</i>
                     </div>
                   </div>
                 </div>
@@ -38,7 +65,7 @@ class SanPhamMua extends Component {
           </>
         );
       });
-    else {
+    } else {
       return <h5>Chưa có sản phẩm nào được mua</h5>;
     }
   };
@@ -89,7 +116,7 @@ class SanPhamMua extends Component {
                   Close
                 </button>
                 <button type="button" className="btn btn-primary">
-                  Save changes
+                  ORDER
                 </button>
               </div>
             </div>
@@ -104,4 +131,17 @@ const mapStateToProps = (state) => {
     dangSachVanDangDat: state.datHangReducer.dangSachVanDangDat,
   };
 };
-export default connect(mapStateToProps)(SanPhamMua);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    giamSoLuong: (van) => {
+      dispatch(GiamSoLuong(van));
+    },
+    tangSoLuong: (van) => {
+      dispatch(TangSoLuong(van));
+    },
+    huySanPham: (van) => {
+      dispatch(HuySanPham(van));
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SanPhamMua);

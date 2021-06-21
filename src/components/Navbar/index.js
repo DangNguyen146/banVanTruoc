@@ -17,7 +17,7 @@ export default class NavbarHome extends Component {
         <nav className="navbar navbar-expand-lg navbar-light container-fluid shadow">
           <div className="container">
             <NavLink className="navbar-brand" to="/">
-              <img src="./img/Logo.png" style={{ width: 50 }} alt />
+              <img src="./img/Logo.png" style={{ width: 50 }} alt="" />
             </NavLink>
             <div className=" d-flex d-lg-none">
               <button
@@ -50,7 +50,6 @@ export default class NavbarHome extends Component {
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle"
-                    href="#"
                     id="navbarDropdownSKATEBOARDS"
                     role="button"
                     data-toggle="dropdown"
@@ -63,48 +62,26 @@ export default class NavbarHome extends Component {
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdownSKATEBOARDS"
                   >
-                    <a className="dropdown-item" href="#">
-                      Deck
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Trucks
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Wheels
-                    </a>
+                    <NavLink className="dropdown-item" to="/deck/0">
+                      DECK
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/truck/0">
+                      TRUCKS
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/wheel/0">
+                      WHEELS
+                    </NavLink>
                   </div>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <NavLink className="nav-link" to="/blog">
                     BLOG
-                  </a>
+                  </NavLink>
                 </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdownCONTACT"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/contact">
                     CONTACT
-                  </a>
-                  <div
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdownCONTACT"
-                  >
-                    <a className="dropdown-item" href="#">
-                      Map
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      SUPPORT
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      ABOUT ME
-                    </a>
-                  </div>
+                  </NavLink>
                 </li>
               </ul>
 
