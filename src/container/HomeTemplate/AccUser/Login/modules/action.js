@@ -4,25 +4,21 @@ import {
   USER_LOGIN_FAILED,
 } from "./constant";
 import Axios from "axios";
+import { urlweb } from "../../../../../components/URL/url";
 
 export const fetchLoginApi = (user, history) => {
   return (dispatch) => {
     dispatch(actLoginRequest());
     Axios({
-      url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
+      url: urlweb + "/users/login",
       method: "POST",
       data: user,
     })
       .then((result) => {
-        if (result.data.maLoaiNguoiDung === "KhachHang") {
+        if (result.data) {
           dispatch(actLoginSuccess(result.data));
           localStorage.setItem("userKH", JSON.stringify(result.data));
-          if (localStorage.getItem("idDatVe") !== null) {
-            let temp = JSON.parse(localStorage.getItem("idDatVe"));
-            history.push("/datve/" + temp);
-          } else {
-            history.push("/");
-          }
+          history.push("/");
         } else {
           return Promise.reject({
             response: { data: "Lỗi" },
@@ -31,6 +27,7 @@ export const fetchLoginApi = (user, history) => {
       })
       .catch((err) => {
         dispatch(actLoginFailed(err));
+        // console.log(err);
       });
   };
 };

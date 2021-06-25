@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import CardItemListPage from "../../../components/CardItemListPage";
+import Loader from "../../../components/Loader";
 import { connect } from "react-redux";
-import Loader from "./../../../components/Loader";
 
-class ListDeckDetail extends Component {
+class ListTruckDetail extends Component {
   renderHTML = (page) => {
     const { loading, data } = this.props;
     if (loading) return <Loader />;
@@ -20,7 +20,6 @@ class ListDeckDetail extends Component {
       })
     );
   };
-
   render() {
     const { page } = this.props;
     return <div className="row">{this.renderHTML(page)}</div>;
@@ -28,9 +27,9 @@ class ListDeckDetail extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    loading: state.listDecksReducer.loading,
-    data: state.listDecksReducer.data,
+    loading: state.listTrucksReducer.loading,
+    data: state.listTrucksReducer.data,
   };
 };
 
-export default connect(mapStateToProps)(ListDeckDetail);
+export default connect(mapStateToProps)(ListTruckDetail);

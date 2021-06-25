@@ -11,8 +11,6 @@ class CreateAcc extends Component {
       matKhau: "",
       email: "",
       soDt: "",
-      maNhom: "GP10",
-      maLoaiNguoiDung: "KhachHang",
       hoTen: "",
     };
   }

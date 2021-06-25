@@ -1,43 +1,23 @@
 import React, { Component } from "react";
-import { phim_sap_chieu } from "./modules/Url";
 import Slider from "react-slick";
 import Loader from "./../../../components/Loader";
 import CardItem from "./../../../components/CardItem";
 import { connect } from "react-redux";
-import { actListMovieApi } from "./modules/action";
-import database from "./data.json";
+import { fetchListDecksApi } from "./modules2/action";
 
 class ListItem extends Component {
   componentDidMount() {
-    // this.props.fetchListMovie();
+    this.props.fetchListDecks();
   }
-  renderLenght = () => {
-    const { loading, data } = this.props;
-
-    if (loading) return <Loader />;
-    return data && data.length;
-  };
   renderHTML = (temp, resposive) => {
-    // const { loading, data } = this.props;
-    // if (loading) return <Loader />;
-    // return (
-    //   data &&
-    //   data.slice(temp, temp + resposive).map((item, i) => {
-    //     return <CardItem key={i} movie={item} />;
-    //   })
-    // );
-
-    // let arr = [];
-    // for (let i = 1; i <= 8; i++) {
-    //   arr.push(i);
-    // }
-    // return arr.map((i) => {
-    //   return <CardItem key={i} />;
-    // });
-
-    return database.slice(temp, temp + resposive).map((item, i) => {
-      return <CardItem key={i} van={item} />;
-    });
+    const { loading, data } = this.props;
+    if (loading) return <Loader />;
+    return (
+      data &&
+      data.slice(temp, temp + resposive).map((item, i) => {
+        return <CardItem key={i} van={item} />;
+      })
+    );
   };
 
   constructor(props) {
@@ -62,16 +42,13 @@ class ListItem extends Component {
       arrows: false,
     };
     const renderSlides = (resposive) => {
-      // let temp = this.renderLenght() / resposive;
       let arr = [0];
-      for (let i = 1; i <= 20 / resposive; i++) {
+      for (let i = 1; i <= 5; i++) {
         arr.push(i);
       }
       let temp1 = -resposive;
-      // const { loading } = this.props;
-
-      // if (loading) return <Loader />;
-      // let arr = [1, 2, 3, 4, 5, 6];
+      const { loading, data } = this.props;
+      if (loading) return <Loader />;
       return arr.map(() => (
         <div>
           <div className="row mx-0">
@@ -79,18 +56,6 @@ class ListItem extends Component {
           </div>
         </div>
       ));
-
-      //   let arr = [];
-      //   for (let i = 1; i <= 2; i++) {
-      //     arr.push(i);
-      //   }
-      //   return arr.map((index) => (
-      //     <div>
-      //       <div className="row mx-0">
-      //         {this.renderHTML(resposive, resposive)}
-      //       </div>
-      //     </div>
-      //   ));
     };
     return (
       <>
@@ -125,17 +90,17 @@ class ListItem extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    // loading: state.listMoviceReducer.loading,
-    // data: state.listMoviceReducer.data,
+    loading: state.listDecksReducer.loading,
+    data: state.listDecksReducer.data,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  // return {
-  //   fetchListVan: () => {
-  //     dispatch(actListMovieApi(van));
-  //   },
-  // };
+  return {
+    fetchListDecks: () => {
+      dispatch(fetchListDecksApi());
+    },
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListItem);

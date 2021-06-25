@@ -4,19 +4,20 @@ import {
   USER_CREATE_FAILED,
 } from "./constant";
 import Axios from "axios";
+import { urlweb } from "../../../../../components/URL/url";
 
 export const fetchCreateApi = (user, history) => {
   return (dispatch) => {
     dispatch(actCreateRequest());
     Axios({
-      url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy",
+      url: urlweb + "/users/signup",
       method: "POST",
       data: user,
     })
       .then((result) => {
-        if (result.data.maLoaiNguoiDung === "KhachHang") {
+        if (result.data) {
           dispatch(actCreateSuccess(result.data));
-          localStorage.setItem("userKH", JSON.stringify(result.data));
+          alert("Tạo tài khoản thành công, vui lòng đăng nhập");
           history.push("/");
         } else {
           return Promise.reject({

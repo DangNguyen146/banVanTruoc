@@ -1,9 +1,22 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import ListDeckDetail from "./listDeckDetail";
+import ListDeckDetail from "./listWheelDetail";
 import Footer from "../Footer";
+import { connect } from "react-redux";
+import { fetchListWheelsApi } from "./modules/action";
 
-export default class DetaiPageWheel extends Component {
+class DetaiPageWheel extends Component {
+  componentDidMount() {
+    this.props.fetchListWheels();
+  }
+  constructor(props) {
+    super(props);
+    this.state = {
+      page1: parseInt(this.props.match.params.id),
+      page2: parseInt(this.props.match.params.id) + 1,
+      page3: parseInt(this.props.match.params.id) + 2,
+    };
+  }
   render() {
     return (
       <>
@@ -13,40 +26,56 @@ export default class DetaiPageWheel extends Component {
             <ListDeckDetail key="0" page={this.props.match.params.id} />
             <nav aria-label="Page navigation example">
               <ul className="pagination justify-content-center ">
-                <li className="page-item">
+                <li
+                  className={
+                    parseInt(this.props.match.params.id) === 0
+                      ? "page-item disabled"
+                      : "page-item"
+                  }
+                >
                   <NavLink
                     className="page-link text-dark"
-                    to={
-                      "/deck/" + parseInt(this.props.match.params.id) - 1 >= 0
-                        ? parseInt(this.props.match.params.id) - 1
-                        : 3
-                    }
+                    to={"/wheel/" + parseInt(this.props.match.params.id - 1)}
                   >
                     Previous
                   </NavLink>
                 </li>
                 <li className="page-item">
-                  <NavLink className="page-link text-dark" to="/deck/0">
-                    1
-                  </NavLink>
-                </li>
-                <li className="page-item">
-                  <NavLink className="page-link text-dark" to="/deck/1">
-                    2
-                  </NavLink>
-                </li>
-                <li className="page-item">
-                  <NavLink className="page-link text-dark" to="/deck/2">
-                    3
+                  <NavLink
+                    className="page-link text-dark"
+                    to={"/wheel/" + this.state.page1}
+                  >
+                    {this.state.page1}
                   </NavLink>
                 </li>
                 <li className="page-item">
                   <NavLink
                     className="page-link text-dark"
+                    to={"/wheel/" + this.state.page2}
+                  >
+                    {this.state.page2}
+                  </NavLink>
+                </li>
+                <li className="page-item">
+                  <NavLink
+                    className="page-link text-dark"
+                    to={"/wheel/" + this.state.page3}
+                  >
+                    {this.state.page3}
+                  </NavLink>
+                </li>
+                <li
+                  className={
+                    parseInt(this.props.match.params.id) > 1
+                      ? "page-item disabled"
+                      : "page-item"
+                  }
+                >
+                  <NavLink
+                    className="page-link text-dark"
                     to={
-                      "/deck/" + this.props.match.params.id + 1 <= 3
-                        ? this.props.match.params.id + 1
-                        : 0
+                      "/wheel/" +
+                      parseInt(parseInt(this.props.match.params.id) + 1)
                     }
                   >
                     Next
@@ -61,3 +90,17 @@ export default class DetaiPageWheel extends Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchListWheels: () => {
+      dispatch(fetchListWheelsApi());
+    },
+  };
+};
+const mapStateToProps = (state) => {
+  return {
+    loading: state.listWheelsReducer.loading,
+    data: state.listWheelsReducer.data,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(DetaiPageWheel);

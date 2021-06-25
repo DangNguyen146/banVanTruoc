@@ -8,7 +8,6 @@ class User extends Component {
     localStorage.setItem("createAcc", JSON.stringify("true"));
   }
   handelOnLogout = () => {
-    localStorage.removeItem("idDatVe");
     this.props.fectchLogOut();
   };
   render() {
@@ -26,7 +25,7 @@ class User extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Chào, {this.props.userLoginReducer.hoTen}
+                Chào, {this.props.userLoginReducer.user.hoTen}
               </a>
               <div className="dropdown-menu" aria-labelledby="username">
                 <a className="dropdown-item" href="#">
