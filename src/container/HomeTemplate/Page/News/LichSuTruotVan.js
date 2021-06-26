@@ -71,6 +71,7 @@ export default function LichSuTruotVan() {
               </p>
               <div className="text-center">
                 <img
+                  className="w-50"
                   data-thumb="original"
                   original-height="333"
                   original-width="777"
@@ -107,6 +108,7 @@ export default function LichSuTruotVan() {
               </p>
               <div className="text-center">
                 <img
+                  className="w-50"
                   data-thumb="original"
                   original-height="333"
                   original-width="777"
@@ -128,6 +130,7 @@ export default function LichSuTruotVan() {
                 </p>
                 <div className="text-center">
                   <img
+                    className="w-50"
                     data-thumb="original"
                     original-height="333"
                     original-width="777"
@@ -155,6 +158,7 @@ export default function LichSuTruotVan() {
               </p>
               <div className="text-center">
                 <img
+                  className="w-50"
                   data-thumb="original"
                   original-height="333"
                   original-width="777"
@@ -181,6 +185,7 @@ export default function LichSuTruotVan() {
               </p>
               <div className="text-center">
                 <img
+                  className="w-50"
                   data-thumb="original"
                   original-height="333"
                   original-width="777"
@@ -201,6 +206,7 @@ export default function LichSuTruotVan() {
               </p>
               <div className="text-center">
                 <img
+                  className="w-50"
                   data-thumb="original"
                   original-height="333"
                   original-width="777"
@@ -223,6 +229,7 @@ export default function LichSuTruotVan() {
               </p>
               <div className="text-center">
                 <img
+                  className="w-50"
                   data-thumb="original"
                   original-height="333"
                   original-width="777"
@@ -246,6 +253,7 @@ export default function LichSuTruotVan() {
               </p>
               <div className="text-center">
                 <img
+                  className="w-50"
                   data-thumb="original"
                   original-height="333"
                   original-width="777"
@@ -280,6 +288,7 @@ export default function LichSuTruotVan() {
               </p>
               <div className="text-center">
                 <img
+                  className="w-50"
                   data-thumb="original"
                   original-height="333"
                   original-width="777"
@@ -299,6 +308,7 @@ export default function LichSuTruotVan() {
               </p>
               <div className="text-center">
                 <img
+                  className="w-50"
                   data-thumb="original"
                   original-height="333"
                   original-width="777"
