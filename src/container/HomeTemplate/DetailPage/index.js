@@ -1,11 +1,20 @@
 import { Button } from "@material-ui/core";
+
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import Footer from "../Footer";
-import database from "./data.json";
+
 import { DatHangAction } from "./Modules/action";
+import { fetchItemsApi } from "./modules2/action";
+import Loader from "../../../components/Loader";
+import { Link } from "react-router-dom";
+import Mota from "./Mota";
 
 class DetailPage extends Component {
+  componentDidMount() {
+    this.props.fetchListItems(this.props.match.params.id);
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -14,105 +23,103 @@ class DetailPage extends Component {
   }
 
   renderHTML = () => {
-    return database.map((item, i) => {
-      if (item.maVan == this.props.match.params.id) {
-        return (
-          <>
-            <div className="col-12 col-md-4">
-              <img src={item.hinhAnh} className="w-100" alt="" />
-            </div>
-            <div className="col-12 col-md-8 text-light">
-              <div className="row">
-                <div className="col-4">Tên sản phẩm: </div>
-                <div className="col-8">
-                  <b className="pb-0">{item.tenVan}</b>
-                </div>
-                <div className="col-4">Giá sản phẩm: </div>
-                <div className="col-8">
-                  <i className="pb-0">{item.giaVan}</i>
-                </div>
-                <div className="col-4">Mô tả: </div>
-                <div className="col-8">
-                  <i className="pb-0">{item.moTa}</i>
-                </div>
-                <div className="col-4">Đánh giá: </div>
-                <div className="col-8">
-                  <i className="pb-0 text-warning">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                  </i>
-                </div>
-                <div className="col-2">
-                  <Button
-                    className="w-100  p-2 text-center border shadow item-hover-item bg-product"
-                    onClick={() => {
-                      this.props.datVan({
-                        maVan: item.maVan,
-                        tenVan: item.tenVan,
-                        giaVan: item.giaVan,
-                        hinhAnh: item.hinhAnh,
-                        moTa: item.moTa,
-                        danhGia: item.danhGia,
-                        soLuong: 1,
-                      });
-                      this.setState({
-                        show: true,
-                      });
-                    }}
-                  >
-                    <i className="fa fa-shopping-cart text-light" />
-                  </Button>
-                </div>
-                <div className="col-1 d-block d-md-none"></div>
-                <div className="col-2 ">
-                  <Button className="w-100 p-2 text-center border shadow item-hover-item bg-product">
-                    <i className="fa fa-search-plus text-light" />
-                  </Button>
-                </div>
-                <div className="col-1 d-block d-md-none"></div>
-                <div className="col-2 ">
-                  <Button className="w-100  p-2 text-center border shadow item-hover-item bg-product">
-                    <i className="fa fa-ice-cream text-light" />
-                  </Button>
-                </div>
+    const { data, loading } = this.props;
+    if (loading) return <Loader />;
+    return (
+      data && (
+        <>
+          <div className="col-12 col-md-4 rounded shadow">
+            <img src={data.hinhAnh} className="w-100" alt="" />
+          </div>
+          <div className="d-none d-md-block col-1"></div>
+          <div className="col-12 col-md-7 text-dark mt-5">
+            <div className="row mt-5">
+              <div className="col-4 text-dark">Tên sản phẩm: </div>
+              <div className="col-8">
+                <b className="pb-0 text-dark">{data.tenVan}</b>
+              </div>
+              <div className="col-4 text-dark">Giá sản phẩm: </div>
+              <div className="col-8">
+                <i className="pb-0 text-dark">{data.giaVan}</i>
+              </div>
+
+              <div className="col-4 text-dark">Đánh giá: </div>
+              <div className="col-8">
+                <i className="pb-0 text-warning">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                </i>
+              </div>
+              <div className="col-2 mt-3">
+                <Button
+                  className="w-100  p-2 text-center border shadow item-hover-item bg-product"
+                  onClick={() => {
+                    this.props.datVan({
+                      _id: data._id,
+                      maVan: data.maVan,
+                      tenVan: data.tenVan,
+                      giaVan: data.giaVan,
+                      hinhAnh: data.hinhAnh,
+                      moTa: data.moTa,
+                      danhGia: data.danhGia,
+                      soLuong: 1,
+                    });
+                    this.setState({
+                      show: true,
+                    });
+                  }}
+                >
+                  <i className="fa fa-shopping-cart text-dark" />
+                </Button>
+              </div>
+              <div className="col-1 d-block d-md-none"></div>
+              <div className="col-2 mt-3">
+                <Button className="w-100 p-2 text-center border shadow item-hover-item bg-product">
+                  <i className="fa fa-search-plus text-dark" />
+                </Button>
+              </div>
+              <div className="col-1 d-block d-md-none"></div>
+              <div className="col-2 mt-3">
+                <Button className="w-100  p-2 text-center border shadow item-hover-item bg-product">
+                  <i className="fa fa-ice-cream text-dark" />
+                </Button>
               </div>
             </div>
-          </>
-        );
-      }
-    });
+          </div>
+          <div className="d-block d-md-none col-12 py-2"></div>
+        </>
+      )
+    );
   };
   render() {
     return (
       <>
-        <div style={{ marginTop: 65 }}>
-          <div className="header-detail">
-            <div>
-              <div className="context">
-                <div className="container">
-                  <div className="row">{this.renderHTML()}</div>
-                </div>
-              </div>
-              <div className="area">
-                <ul className="circles">
-                  <li />
-                  <li />
-                  <li />
-                  <li />
-                  <li />
-                  <li />
-                  <li />
-                  <li />
-                  <li />
-                  <li />
-                </ul>
-              </div>
-            </div>
+        <div style={{ marginTop: 90 }}>
+          <section className="container">
+            <Link className="text-decoration-none" to="/">
+              <h4 className="d-inline text-dark">Trang chủ </h4>
+            </Link>
+            <i class="fa fa-angle-double-right"></i>
+            <Link className="text-decoration-none">
+              <h4 className="d-inline text-dark"> Sản phẩm </h4>
+            </Link>
+            <i class="fa fa-angle-double-right"></i>
+            <Link className="text-decoration-none">
+              <h4 className="d-inline text-dark"> Chi tiết </h4>
+            </Link>
+          </section>
+          <div style={{ height: 1 }} className="bg-dark mt-2 mb-4"></div>
+
+          <div className="container rounded shadow mb-5">
+            <div className="row">{this.renderHTML()}</div>
           </div>
         </div>
+        <section className="container">
+          <Mota />
+        </section>
         <Footer />
         <div
           className="position-fixed bottom-0 right-0 p-3"
@@ -155,12 +162,17 @@ class DetailPage extends Component {
 const mapStateToProps = (state) => {
   return {
     dangSachVanDangDat: state.datHangReducer.dangSachVanDangDat,
+    loading: state.listItemsReducer.loading,
+    data: state.listItemsReducer.data,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     datVan: (van) => {
       dispatch(DatHangAction(van));
+    },
+    fetchListItems: (_id) => {
+      dispatch(fetchItemsApi(_id));
     },
   };
 };

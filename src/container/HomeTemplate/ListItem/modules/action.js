@@ -1,38 +1,43 @@
-import * as ActionType from "./constant";
+import {
+  LIST_DECKS_REQUEST,
+  LIST_DECKS_SUCCESS,
+  LIST_DECKS_FAILED,
+} from "./constant";
 import Axios from "axios";
+import { urlweb } from "../../../../components/URL/url";
 
-export const actListMovieApi = (url) => {
+export const fetchListDecksApi = () => {
   return (dispatch) => {
-    dispatch(actListMovieRequest());
+    dispatch(actListDecksRequest());
     Axios({
-      url,
+      url: urlweb + "/decks",
       method: "GET",
     })
       .then((result) => {
-        dispatch(actListMovieSuccess(result.data));
+        dispatch(actListDecksSuccess(result.data));
       })
       .catch((err) => {
-        dispatch(actListMovieFailed(err));
+        dispatch(actListDecksFailed(err));
       });
   };
 };
 
-const actListMovieRequest = () => {
+const actListDecksRequest = () => {
   return {
-    type: ActionType.LIST_MOVIE_REQUEST,
+    type: LIST_DECKS_REQUEST,
   };
 };
 
-const actListMovieSuccess = (data) => {
+const actListDecksSuccess = (data) => {
   return {
-    type: ActionType.LIST_MOVIE_SUCCESS,
+    type: LIST_DECKS_SUCCESS,
     payload: data,
   };
 };
 
-const actListMovieFailed = (err) => {
+const actListDecksFailed = (err) => {
   return {
-    type: ActionType.LIST_MOVIE_FAILED,
+    type: LIST_DECKS_FAILED,
     payload: err,
   };
 };

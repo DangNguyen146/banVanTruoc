@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { fetchLoginApi } from "./modules/action";
 import { connect } from "react-redux";
 import Loader from "./../../../../components/Loader";
-import { Redirect } from "react-router";
 
 class Login extends Component {
   constructor(props) {

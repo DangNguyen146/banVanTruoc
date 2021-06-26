@@ -354,9 +354,10 @@ header .header .header-search {
   position: relative;
 }
 
-.container .productitem .product-img img {
+.container .productitem .product-img .product-img-item img {
   width: 100%;
   background-position: center;
+  transition: all 0.5;
 }
 
 .container .productitem .product-img .item-hover {
@@ -378,6 +379,7 @@ header .header .header-search {
   background-color: rgba(255, 255, 255, 0.4);
   margin: 0 auto;
   transition: all 0.5s;
+  color: #000;
 }
 
 .container .productitem .product-img .item-hover .item-hover-hover .bg-product:hover {
@@ -1158,6 +1160,50 @@ footer .foter-icon {
   margin-left: auto;
   border-radius: 50%;
   animation: floatingShadow 3s ease-in-out infinite;
+}
+
+.thongTin .welcome {
+  width: 100%;
+  height: 415px;
+  top: 25%;
+  border-radius: 5px;
+}
+
+.thongTin .pinkbox {
+  position: absolute;
+  top: -10%;
+  width: 50%;
+  height: 500px;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+  z-index: 2;
+}
+
+.thongTin .nodisplay {
+  display: none;
+  transition: all 0.5s ease;
+}
+
+.thongTin .leftbox,
+.thongTin .rightbox {
+  position: absolute;
+  width: 50%;
+  transition: 1s all ease;
+}
+
+.thongTin .leftbox {
+  left: -2%;
+}
+
+.thongTin .rightbox {
+  right: -2%;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #000 !important;
 }
 
 * {

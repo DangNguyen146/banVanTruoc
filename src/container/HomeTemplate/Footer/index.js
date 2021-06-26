@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class Footer extends Component {
   render() {
     return (
-      <footer className=" bg-dark text-light wow fadeInLeft">
+      <footer className=" bg-dark text-light wow animate__fadeInDown">
         <div className="container px-3 py-4">
           <div className="row">
             <div className="col-12 mb-3 mb-md-0 col-md-4">
@@ -33,6 +33,28 @@ export default class Footer extends Component {
             </div>
             <div className="col-12 mb-3 mb-md-0 col-md-4">
               <h4>FANPAGE</h4>
+              <div className="row">
+                <div className="col-12 w-100 ">
+                  <div
+                    class="fb-page"
+                    data-href="https://www.facebook.com/VNUTour/"
+                    data-tabs="timeline"
+                    data-width=""
+                    data-height="200"
+                    data-small-header="true"
+                    data-adapt-container-width="true"
+                    data-hide-cover="false"
+                    data-show-facepile="true"
+                  >
+                    <blockquote
+                      cite="https://www.facebook.com/VNUTour/"
+                      class="fb-xfbml-parse-ignore"
+                    >
+                      <a href="https://www.facebook.com/VNUTour/">VNU Tour</a>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="col-12 mb-3 mb-md-0 col-md-4">
               <h4 className="mb-0">ĐỊA CHỈ CỬA HÀNG</h4>

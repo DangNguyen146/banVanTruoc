@@ -2,7 +2,6 @@ import { Button } from "@material-ui/core";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { DatHangAction } from "./Modules/action";
-import { Toast } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 class CardItemListPage extends Component {
@@ -20,8 +19,8 @@ class CardItemListPage extends Component {
                   <Button
                     className="ms-5 mb-2 w-25 p-2 text-center border shadow item-hover-item bg-product"
                     onClick={() => {
-                      const van = this.props.van;
                       this.props.datVan({
+                        _id: van._id,
                         maVan: van.maVan,
                         tenVan: van.tenVan,
                         giaVan: van.giaVan,
@@ -48,7 +47,7 @@ class CardItemListPage extends Component {
             </div>
             <NavLink
               className="product-content text-center nav-link text-dark"
-              to={"/detail/" + this.props.van.maVan}
+              to={"/detail/" + this.props.van._id}
             >
               <h5>{van.tenVan}</h5>
               <p>{van.giaVan}Đ</p>

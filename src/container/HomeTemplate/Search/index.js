@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 export default class Search extends Component {
   render() {
     return (
-      <div className="header-search w-100 wow bounceIn">
+      <div className="header-search w-100 wow animate__fadeInDown">
         <form className="input-group mb-3 w-50" style={{ left: "23%" }}>
           <input
             type="text"
@@ -12,9 +13,14 @@ export default class Search extends Component {
             aria-label="Search anymore"
             aria-describedby="basic-addon2"
           />
-          <button className="input-group-text" id="basic-addon2" type="submit">
+          <NavLink
+            className="input-group-text btn btn-secondary"
+            id="basic-addon2"
+            type="submit"
+            to="/search"
+          >
             Search
-          </button>
+          </NavLink>
         </form>
       </div>
     );

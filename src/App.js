@@ -7,6 +7,8 @@ import BackToTop from "./components/BackToTop";
 
 import { connect } from "react-redux";
 import { USER_LOGIN_SUCCESS } from "./container/HomeTemplate/AccUser/Login/modules/constant";
+
+import { LoadLaiAction } from "./components/CardItem/Modules/action";
 import { createAction } from "./container/HomeTemplate/AccUser/Login/modules/actionforLogin";
 import PageNotFound from "./container/PageNotFound";
 
@@ -43,9 +45,17 @@ class App extends Component {
       this.props.dispatch(createAction(USER_LOGIN_SUCCESS, JSON.parse(user)));
     }
   };
-
+  _getSanPhamDaDat = () => {
+    const hangDat = JSON.parse(localStorage.getItem("hangDat"));
+    if (hangDat) {
+      hangDat.map((van) => {
+        this.props.dispatch(LoadLaiAction(van));
+      });
+    }
+  };
   componentDidMount() {
     this._getLoginInLocal();
+    this._getSanPhamDaDat();
   }
 }
 export default connect()(App);

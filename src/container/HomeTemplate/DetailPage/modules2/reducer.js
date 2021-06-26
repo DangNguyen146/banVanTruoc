@@ -1,7 +1,7 @@
 import {
-  LIST_DECKS_REQUEST,
-  LIST_DECKS_SUCCESS,
-  LIST_DECKS_FAILED,
+  LIST_ITEMS_REQUEST,
+  LIST_ITEMS_SUCCESS,
+  LIST_ITEMS_FAILED,
 } from "./constant";
 
 let initialState = {
@@ -10,21 +10,21 @@ let initialState = {
   err: null,
 };
 
-const listDecksReducer = (state = initialState, action) => {
+const listItemsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LIST_DECKS_REQUEST:
+    case LIST_ITEMS_REQUEST:
       state.loading = true;
       state.data = null;
       state.err = null;
       return { ...state };
 
-    case LIST_DECKS_SUCCESS:
+    case LIST_ITEMS_SUCCESS:
       state.loading = false;
       state.data = action.payload;
       state.err = null;
       return { ...state };
 
-    case LIST_DECKS_FAILED:
+    case LIST_ITEMS_FAILED:
       state.loading = false;
       state.data = null;
       state.err = action.payload;
@@ -34,4 +34,4 @@ const listDecksReducer = (state = initialState, action) => {
   }
 };
 
-export default listDecksReducer;
+export default listItemsReducer;

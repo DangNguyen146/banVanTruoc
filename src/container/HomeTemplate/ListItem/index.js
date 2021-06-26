@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import Loader from "./../../../components/Loader";
 import CardItem from "./../../../components/CardItem";
 import { connect } from "react-redux";
-import { fetchListDecksApi } from "./modules2/action";
+import { fetchListDecksApi } from "./modules/action";
 
 class ListItem extends Component {
   componentDidMount() {
@@ -47,7 +47,7 @@ class ListItem extends Component {
         arr.push(i);
       }
       let temp1 = -resposive;
-      const { loading, data } = this.props;
+      const { loading } = this.props;
       if (loading) return <Loader />;
       return arr.map(() => (
         <div>

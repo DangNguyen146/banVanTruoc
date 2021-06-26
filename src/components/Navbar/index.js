@@ -1,4 +1,3 @@
-import { Link } from "@material-ui/core";
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import User from "./User";
@@ -40,16 +39,16 @@ export default class NavbarHome extends Component {
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link active fw-bold"
+                    className="nav-link active font-weight-bold"
                     aria-current="page"
                     to="/"
                   >
                     HOME
                   </NavLink>
                 </li>
-                <li className="nav-item dropdown">
+                <li className="nav-item dropdown font-weight-bold">
                   <a
-                    className="nav-link dropdown-toggle"
+                    className="nav-link dropdown-toggle font-weight-bold"
                     id="navbarDropdownSKATEBOARDS"
                     role="button"
                     data-toggle="dropdown"
@@ -62,30 +61,39 @@ export default class NavbarHome extends Component {
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdownSKATEBOARDS"
                   >
-                    <NavLink className="dropdown-item" to="/deck/0">
+                    <NavLink
+                      className="dropdown-item font-weight-bold"
+                      to="/deck/0"
+                    >
                       DECK
                     </NavLink>
-                    <NavLink className="dropdown-item" to="/truck/0">
+                    <NavLink
+                      className="dropdown-item font-weight-bold"
+                      to="/truck/0"
+                    >
                       TRUCKS
                     </NavLink>
-                    <NavLink className="dropdown-item" to="/wheel/0">
+                    <NavLink
+                      className="dropdown-item font-weight-bold"
+                      to="/wheel/0"
+                    >
                       WHEELS
                     </NavLink>
                   </div>
                 </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/blog">
+                <li className="nav-item font-weight-bold">
+                  <NavLink className="nav-link font-weight-bold" to="/blog">
                     BLOG
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/contact">
+                <li className="nav-item font-weight-bold">
+                  <NavLink className="nav-link font-weight-bold" to="/contact">
                     CONTACT
                   </NavLink>
                 </li>
               </ul>
 
-              <div className="collapse d-flex m-0 p-0">
+              <div className="collapse d-flex m-0 p-0 font-weight-bold">
                 <User />
               </div>
             </div>

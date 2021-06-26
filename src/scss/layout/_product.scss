@@ -2,9 +2,12 @@
     .productitem {
         .product-img {
             position: relative;
-            img {
-                width: 100%;
-                background-position: center;
+            .product-img-item {
+                img {
+                    width: 100%;
+                    background-position: center;
+                    transition: all 0.5;
+                }
             }
             .item-hover {
                 position: absolute;

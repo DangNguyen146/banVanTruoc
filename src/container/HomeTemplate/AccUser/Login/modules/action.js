@@ -27,7 +27,6 @@ export const fetchLoginApi = (user, history) => {
       })
       .catch((err) => {
         dispatch(actLoginFailed(err));
-        // console.log(err);
       });
   };
 };

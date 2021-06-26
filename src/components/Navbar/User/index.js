@@ -31,6 +31,14 @@ class User extends Component {
                 <a className="dropdown-item" href="#">
                   <NavLink
                     className="btn btn-redorange btn-focus"
+                    to="/quanlidonhang"
+                  >
+                    Quản lí đơn hàng
+                  </NavLink>
+                </a>
+                <a className="dropdown-item" href="#">
+                  <NavLink
+                    className="btn btn-redorange btn-focus"
                     onClick={() => {
                       this.handelOnLogout();
                     }}
@@ -47,6 +55,12 @@ class User extends Component {
             <p className="mb-1 text-redorange">
               Chào, {this.props.userLoginReducer.hoTen}
             </p>
+            <NavLink
+              className="btn btn-redorange btn-focus"
+              to="/quanlidonhang"
+            >
+              Quản lí đơn hàng
+            </NavLink>
             <NavLink
               className="btn btn-redorange btn-focus"
               onClick={() => {

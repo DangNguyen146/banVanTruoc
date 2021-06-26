@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import ListTruckDetail from "./listTruckDetail";
 import Footer from "../Footer";
 import { connect } from "react-redux";
@@ -20,7 +20,18 @@ class DetaiPageTruck extends Component {
   render() {
     return (
       <>
-        <div style={{ marginTop: 55 }}>
+        <div style={{ marginTop: 90 }}>
+          <section className="container">
+            <Link className="text-decoration-none" to="/">
+              <h4 className="d-inline text-dark">Trang chủ </h4>
+            </Link>
+            <i class="fa fa-angle-double-right"></i>
+            <Link className="text-decoration-none" to="/truck/0">
+              <h4 className="d-inline text-dark"> Truck</h4>
+            </Link>
+          </section>
+          <div style={{ height: 1 }} className="bg-dark mt-2 mb-4"></div>
+
           <div className="container shadow-lg py-5" style={{ minHeight: 1110 }}>
             <h1 className="text-center">TRUCKS</h1>
             <ListTruckDetail key="0" page={this.props.match.params.id} />

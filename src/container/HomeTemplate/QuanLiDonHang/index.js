@@ -1,17 +1,16 @@
 import { Button } from "@material-ui/core";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { browserHistory } from "react-router";
 import { GiamSoLuong, TangSoLuong, HuySanPham } from "./Modules/action";
 import { Link } from "react-router-dom";
 
-class SanPhamMua extends Component {
+class QuanLiDonHang extends Component {
   renderHTML = () => {
     if (this.props.dangSachVanDangDat.length !== 0) {
       return this.props.dangSachVanDangDat.map((item, index) => {
         return (
           <>
-            <div className="col-12">
+            <div className="col-12 ">
               <div className="row">
                 <div className="col-3">
                   <img className="w-100" src={item.hinhAnh} alt="" />
@@ -58,12 +57,12 @@ class SanPhamMua extends Component {
                   </div>
                 </div>
               </div>
+              {index + 1 < this.props.dangSachVanDangDat.length ? (
+                <div className="bg-dark w-100 my-4" style={{ height: 2 }}></div>
+              ) : (
+                ""
+              )}
             </div>
-            {index + 1 < this.props.dangSachVanDangDat.length ? (
-              <div className="bg-dark w-100 my-4" style={{ height: 2 }}></div>
-            ) : (
-              ""
-            )}
           </>
         );
       });
@@ -74,57 +73,33 @@ class SanPhamMua extends Component {
   render() {
     return (
       <>
-        <div
-          className="navbar navbar-expand-lg SanPhamMua"
-          data-toggle="modal"
-          data-target="#SanPhamMuaModal"
-        >
-          <div className="SanPhamMua-item">
-            <i className="fa fa-shopping-cart" />
-          </div>
-        </div>
-
-        <div
-          className="modal fade"
-          id="SanPhamMuaModal"
-          tabIndex={-1}
-          aria-labelledby="SanPhamMuaModal"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Sản phẩm đã mua</h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">×</span>
-                </button>
+        <div style={{ marginTop: 90 }}>
+          <section className="container">
+            <Link className="text-decoration-none" to="/">
+              <h4 className="d-inline text-dark">Trang chủ </h4>
+            </Link>
+            <i class="fa fa-angle-double-right"></i>
+            <Link className="text-decoration-none" to="/quanlidonhang">
+              <h4 className="d-inline text-dark"> Quản lí đơn hàng</h4>
+            </Link>
+          </section>
+          <div style={{ height: 1 }} className="bg-dark mt-2 mb-4"></div>
+          <div className="container">
+            <div className="row shadow rounded">
+              <div className="col-12 mt-4">
+                <h2 className="text-center">Quản lí đơn hàng</h2>
               </div>
-              <div className="modal-body">
-                <div className="container-fluid">
-                  <div className="row">{this.renderHTML()}</div>
-                </div>
+              <div className="col-12 col-md-8 my-3">
+                <div className="row">{this.renderHTML()}</div>
               </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
-                <Link
-                  className="btn btn-dark"
-                  type="button"
-                  to="/order"
-                  data-dismiss="modal"
-                >
-                  ORDER
-                </Link>
+              <div className="col-12 col-md-4">
+                <h3>Chi tiết đơn hàng</h3>
+                <p>Tổng số lượng: ...</p>
+                <p>Tính năng đang phát triển</p>
+                <Button className="btn btn-dark bg-dark text-light px-5">
+                  {" "}
+                  Đặt hàng
+                </Button>
               </div>
             </div>
           </div>
@@ -151,4 +126,4 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(SanPhamMua);
+export default connect(mapStateToProps, mapDispatchToProps)(QuanLiDonHang);
