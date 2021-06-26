@@ -21,7 +21,7 @@ export const fetchLoginApi = (user, history) => {
           history.push("/");
         } else {
           return Promise.reject({
-            response: { data: "Lỗi" },
+            response: result.err,
           });
         }
       })
